@@ -4,51 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Validado JS</title>
+    <!-- CDN Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Mis estilos CSS-->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>Formulario</h1>
-    <form id="formulario">
-        <table>
-            <tr>
-                <td>Nombre: </td>
-                <td>
-                    <input type="text" name="nombre" id="nombre" />
-                </td>
-            </tr>
-            <tr>
-                <td>Telefono: </td>
-                <td>
-                    <input type="text" name="telefono" id="telefono" />
-                </td>
-            </tr>
-            <tr>
-                <td>Fecha de nacimiento: </td>
-                <td>
-                    <input type="text" name="dia" size="2" id="dia" />
-                    <input type="text" name="mes" size="2" id="mes" />
-                    <input type="text" name="ano" id="ano" size="4" />
-                </td>
-            </tr>
-            <tr>
-                <td>Sexo : </td>
-                <td>
-                    <input type="radio" name="sexo" value="H" checked /> Hombre
-                    <input type="radio" name="sexo" value="M" /> Mujer
-                </td>
-            </tr>
-            <tr>
-                <td>Mayor de 18:</td>
-                <td>
-                    <input type="checkbox" name="mayor" id="mayor" checked/>
-                </td>
-            </tr>
-            </td>
-            </tr>
-        </table>
-        <p>
-            <input type="submit" value="Enviar" id="enviar" />
-            <input type="reset" value="Borrar" id="borrar" />
-        </p>
-    </form>
+    <section class="container d-flex align-items-center flex-column pt-5">
+        <h1 class="text-white text-center font-weight-bold">Formulario de registro</h1>
+        <form id="formulario">
+    
+            <div class="form-group">
+                <table>
+                    <tr>
+                        <td>
+                            <input class="form-control form-control-lg" id="name" type="text" name="nombre" placeholder="Nombre" />
+                            <p id="textName" class="errorMessage"></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input class="form-control form-control-lg" id="email" type="text" name="correo" placeholder="Correo" />
+                            <p id="textEmail" class="errorMessage"></p>
+                        </td>
+                       
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <input class="form-control form-control-lg" id="phone" type="text" name="telefono" placeholder="Teléfono (8 caracteres)" />
+                            <p id="textPhone" class="errorMessage"></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Fecha de nacimiento: </td>
+                    </tr>
+
+                    <tr class="date">
+                        <td>
+                            <input class="fecha form-control form-control-lg" id="day" type="text" name="dia" size="2" placeholder="Día" />
+
+                            <input class="fecha form-control form-control-lg" id="month" type="text" name="mes" size="2" placeholder="Mes" />
+
+                            <input class="fecha form-control form-control-lg"  id="year" type="text" name="ano" size="4" placeholder="Año" />
+                            <p id="textDate" class="errorMessage"></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>Sexo:</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <input type="radio" name="sexo" value="H" checked /> Hombre
+                            <input type="radio" name="sexo" value="M" /> Mujer
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="check">
+                                <label class="form-check-label" for="defaultCheck1">
+                                  Mayor de 18 años
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+                    </td>
+                    </tr>
+                </table>
+                <div class="mt-3">
+                    <input class="btn btn-light font-weight-bold" id="submit" type="submit" value="Enviar"/>
+                    <input class="btn btn-light font-weight-bold" id="reset" type="reset" value="Borrar"/>
+                </div>
+            </div>
+        </form>
+    </section>
+   
+    <script src="assets/js/javascript.js"></script>
 </body>
 </html>

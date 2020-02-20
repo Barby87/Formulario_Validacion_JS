@@ -1,0 +1,62 @@
+section {
+    background-color:#739C2D;
+    margin-top: 3rem;
+    margin-bottom: 3em;
+    padding-bottom: 1.5em;
+    width: 40%!important;
+}
+
+h1 {
+    margin-bottom: 1em;
+}
+.form-group {
+    background-color: rgb(216, 216, 216);
+    padding: 1em;
+    border-radius: 10px;
+    padding: 2em;
+}
+
+input {
+    /* margin: 0.5em 0; */
+    border-radius: 3px!important;
+}
+
+.fecha {
+    width: 25%;
+    display: inline-block;
+}
+
+#day, #month {
+    margin-right: 0.5em;
+}
+
+#submit {
+    margin-right: 1em;
+}
+
+#submit:hover {
+    background-color: rgb(0, 162, 255);
+    color: white;
+}
+
+#delete:hover {
+    background-color: rgb(241, 65, 65);
+    color: white;
+}
+
+/*Estilo de borde rojo en caso de que el correo sea inválido*/
+
+.redBorder {
+    border: 1px solid red;
+}
+
+.greenBorder {
+    border: 1.5px solid rgb(145, 245, 145);
+}
+
+.errorMessage {
+    display: inline-block;
+    color: red;
+}
+
+
