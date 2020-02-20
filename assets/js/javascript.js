@@ -8,7 +8,7 @@ const textDate =document.getElementById('textDate');
 const day = document.getElementById('day');
 const month = document.getElementById('month');
 const year = document.getElementById('year');
-const check = document.getElementById('check');
+const ischecked = document.getElementById('check').checked;
 const submit = document.getElementById('submit');
 const reset = document.getElementById('reset');
 
@@ -17,14 +17,30 @@ const reset = document.getElementById('reset');
 name.addEventListener('blur', function() {
     if(this.value == "") {
         console.log('Campo obligatorio');
-        // Agregando nueva clase al input para darle estilo a través de CSS
-        this.className += " redBorder";
+        this.style.border = '1.5px solid red';
         // Agregando mensaje de error
         textName.innerHTML = "*Campo obligatorio.";
     }else{
         console.log('Correcto!');
-        this.className += " greenBorder";
+        this.style.border = '1.5px solid #91f591';
     }
+
+    // Validando que el campo nombre no contenga números
+    let nameValue = this.value;
+    let arrName= nameValue.split('');
+    console.log('arrName', arrName);
+
+    arrName.forEach((e)=> {
+        if(isNaN(e) || e === ' ') {
+            console.log('ES UNA LETRA');
+            this.style.border = '1.5px solid #91f591';
+
+        }else{
+            console.log('ES UN NÚMERO');
+            this.style.border = '1.5px solid red';
+            textName.innerHTML = "*Por favor, ingrese sólo letras";
+        }
+    });
 });
 
 // Evento focus se activa cuando el usuario se vuelve a sitúar sobre el campo nombre
@@ -51,11 +67,11 @@ email.addEventListener('blur', function(){
     // Estructura condicional para validar email
     if(newArr.length != 2 ){
         console.log('No pasó prueba del @!');
-        this.className += " redBorder";
+        this.style.border = '1.5px solid red';
         textEmail.innerHTML = '*Ingrese un correo válido';     
     }else{  
         console.log('Prueba del @ exitosa!');
-        this.className += ' greenBorder';
+        this.style.border = '1.5px solid #91f591';
     }  
 
     // Creando nuevo arreglo para verificar si está el elemento 'com' dentro del string
@@ -69,10 +85,10 @@ email.addEventListener('blur', function(){
         if( a.indexOf(e) === ultimoIndice ) {
             if(e === 'com'){
                 console.log("prueba del .com pasada exitosamente");
-                this.className += " greenBorder";
+                this.style.border = '1.5px solid #91f591';
             }else{
                 console.log('prueba del .com NO PASÓ');
-                this.className += " redBorder";
+                this.style.border = '1.5px solid red';
                 textEmail.innerHTML = "*Por favor, ingrese un correo válido.";
             }
         }
@@ -101,21 +117,37 @@ phone.addEventListener('blur', function() {
     // Asegurando que el usuario no deje el campo vacío ni ingrese menos caracteres de lo que se requiere.
     if(this.value.length == 11) {
         console.log('Muy bien!');
-        this.className += " greenBorder";
+        this.style.border = '1.5px solid #91f591';
 
     }else if (this.value.length == 3){
         console.log('Campo obligatorio');
-        this.className += " redBorder";
+        this.style.border = '1.5px solid red';
         textPhone.innerHTML = "*Campo obligatorio";
 
-    }else if(this.value.length > 3 && this.value.length < 11){
+    }else if (this.value.length > 3 && this.value.length < 11){
         console.log('Teléfono inválido');
-        this.className += " redBorder";
+        this.style.border = '1.5px solid red';
         textPhone.innerHTML = "*Por favor, ingrese un teléfono de 8 dígitos.";
     }else{
         console.log('Muy bien!');
-        this.className += " redBorder";
+        this.style.border = '1.5px solid #91f591';
     }
+
+    let phoneValue = this.value;
+    let arrNumber= phoneValue.split('');
+    console.log('arrNumer', arrNumber);
+
+    arrNumber.forEach((e)=> {
+        if(isNaN(e)) {
+            console.log('ES UNA LETRA');
+            this.style.border = '1.5px solid red';
+            textPhone.innerHTML = "*Por favor, ingrese sólo números";
+
+        }else{
+            console.log('ES UN NÚMERO');
+            this.style.border = '1.5px solid #91f591';
+        }
+    });
 });
 
 phone.addEventListener('focus', function(e) {
@@ -125,59 +157,58 @@ phone.addEventListener('focus', function(e) {
 
 
 /********** Validación de fecha ***********/
-
 day.addEventListener('blur', function() {
     if(this.value.length == 0) {
-    this.className += " redBorder";
-    textDate.innerHTML = "*Campo obligatorio";
+        this.style.border = '1.5px solid red';
+    textDay.innerHTML = "*Campo obligatorio";
 
     }else if((parseInt(this.value)) > 31) {
-        this.className += " redBorder";
-        textDate.innerHTML = "*Día del mes hasta el 31";
+        this.style.border = '1.5px solid red';
+        textDay.innerHTML = "*Día del mes hasta el 31";
 
     } else {
-        this.className += " greenBorder";
+        this.style.border = '1.5px solid #91f591';
     }
 });
 
 day.addEventListener('focus', function() {
-    textDate.innerHTML = "";
+    textDay.innerHTML = "";
 });
 
 
 month.addEventListener('blur', function() {
     if(this.value.length == 0) {
-    this.className += " redBorder";
-    textDate.innerHTML = "*Campo obligatorio";
+    this.style.border = '1.5px solid red';
+    textMonth.innerHTML = "*Campo obligatorio";
 
     }else if((parseInt(this.value)) > 12) {
-        this.className += " redBorder";
-        textDate.innerHTML = "*Mes del 1 al 12";
+        this.style.border = '1.5px solid red';
+        textMonth.innerHTML = "*Mes del 1 al 12";
 
     } else {
-        this.className += " greenBorder";
+        this.style.border = '1.5px solid #91f591';
     }
 });
 
 month.addEventListener('focus', function() {
-    textDate.innerHTML = "";
+    textMonth.innerHTML = "";
 });
 
 year.addEventListener('blur', function() {
     if(this.value.length == 0) {
-    this.className += " redBorder";
-    textDate.innerHTML = "*Campo obligatorio";
+        this.style.border = '1.5px solid red';
+    textYear.innerHTML = "*Campo obligatorio";
 
     }else if((parseInt(this.value)) > 2002) {
-        this.className += " redBorder";
-        textDate.innerHTML = "*Usted no es mayor de edad";
+        this.style.border = '1.5px solid red';
+        textYear.innerHTML = "*Usted no es mayor de edad";
 
     } else {
-        this.className += " greenBorder";
+        this.style.border = '1.5px solid #91f591';
     }
 });
 
 year.addEventListener('focus', function() {
-    textDate.innerHTML = "";
+    textYear.innerHTML = "";
 });
 

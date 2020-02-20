@@ -39,19 +39,9 @@ input {
     color: white;
 }
 
-#delete:hover {
+#reset:hover {
     background-color: rgb(241, 65, 65);
     color: white;
-}
-
-/*Estilo de borde rojo en caso de que el correo sea inválido*/
-
-.redBorder {
-    border: 1px solid red;
-}
-
-.greenBorder {
-    border: 1.5px solid rgb(145, 245, 145);
 }
 
 .errorMessage {
